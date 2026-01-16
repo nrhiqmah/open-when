@@ -1,0 +1,368 @@
+/* =========================
+   RESET
+========================= */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+/* =========================
+   ROOT (DEFAULT THEME)
+========================= */
+:root{
+  --bg1:#f4ebee;
+  --bg2:#82baf6;
+  --card:rgba(164, 189, 247, 0.92);
+
+  --accent1:#f895b4;
+  --accent2:#fec9d5;
+
+  --title:#040002;
+  --sub:#03285f;
+}
+
+/* =========================
+   PAGE BACKGROUND
+========================= */
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Quicksand',sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* dreamy blobs */
+body::before, body::after{
+  content:"";
+  position:fixed;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  filter:blur(55px);
+  opacity:.35;
+  z-index:-2;
+}
+body::before{
+  top:-140px; left:-140px;
+  background:radial-gradient(circle,var(--accent1),transparent 60%);
+}
+body::after{
+  bottom:-160px; right:-160px;
+  background:radial-gradient(circle,var(--accent2),transparent 60%);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container{
+  width:95%;
+  max-width:1000px;
+  background:var(--card);
+  border-radius:34px;
+  padding:44px 34px;
+  box-shadow:0 22px 55px rgba(0,0,0,0.12);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* soft heart pattern */
+.container::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.11;
+  z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cpath d='M70 26c10-14 28-12 34 1 7 14-5 30-34 50-29-20-41-36-34-50 6-13 24-15 34-1z' fill='%23ffffff' fill-opacity='0.85'/%3E%3C/svg%3E");
+  background-size:170px 170px;
+  pointer-events:none;
+}
+.container>*{position:relative;z-index:1;}
+
+/* =========================
+   TITLES
+========================= */
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:38px;
+  color:var(--title);
+  margin-bottom:6px;
+}
+.subtitle{
+  color:var(--sub);
+  margin-bottom:30px;
+  font-size:16px;
+}
+
+/* =========================
+   DASHBOARD GRID (FIXED)
+========================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
+}
+.grid a{
+  font-family:'Baloo 2',cursive;
+  font-size:15px;
+  line-height:1.35;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  color:#292424;
+  text-decoration:none;
+  padding:22px 18px;
+  border-radius:26px;
+  min-height:120px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  transition:transform .28s ease, box-shadow .28s ease;
+  box-shadow:0 14px 28px rgba(0,0,0,0.10);
+}
+.grid a:hover{
+  transform:translateY(-6px) scale(1.04);
+  box-shadow:0 20px 40px rgba(0,0,0,0.14);
+}
+.grid a:active{transform:scale(.98);}
+
+/* =========================
+   FLOATY STICKERS
+========================= */
+.sticker-float{
+  position:absolute;
+  width:56px;height:56px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  font-size:26px;
+  background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.20));
+  border:1px solid rgba(255,255,255,.45);
+  backdrop-filter:blur(10px);
+  box-shadow:0 16px 35px rgba(0,0,0,0.10);
+  animation:floaty 3.6s ease-in-out infinite;
+}
+.sticker-float.s1{top:18px;right:18px;animation-delay:0s;}
+.sticker-float.s2{top:95px;left:16px;animation-delay:.6s;}
+.sticker-float.s3{bottom:120px;right:16px;animation-delay:1.1s;}
+
+@keyframes floaty{
+  0%{transform:translateY(0) rotate(-2deg);}
+  50%{transform:translateY(-10px) rotate(2deg);}
+  100%{transform:translateY(0) rotate(-2deg);}
+}
+
+/* =========================
+   DOODLE / CARTOON CARD
+========================= */
+.doodle{
+  margin:16px auto;
+  padding:16px;
+  border-radius:28px;
+  background:linear-gradient(135deg,rgba(255,255,255,.60),rgba(255,255,255,.25));
+  border:1px solid rgba(255,255,255,.45);
+  backdrop-filter:blur(10px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.08);
+}
+.doodle svg{width:100%;height:210px;display:block;}
+
+/* =========================
+   MESSAGE + MUSIC
+========================= */
+.message{
+  text-align:left;
+  padding:28px;
+  border-radius:26px;
+  line-height:2.05;
+  font-size:15.5px;
+  background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,255,255,.48));
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 18px 40px rgba(0,0,0,0.07);
+}
+.message p{margin-bottom:18px;}
+.signoff{font-weight:600;color:var(--title);}
+
+.music-box{
+  margin-top:22px;
+  padding:22px;
+  border-radius:26px;
+  background:linear-gradient(135deg,rgba(255,255,255,.65),rgba(255,255,255,.28));
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 18px 40px rgba(0,0,0,0.07);
+}
+.music-title{
+  font-family:'Baloo 2',cursive;
+  font-size:16px;
+  margin-bottom:12px;
+}
+.music-note{margin-top:10px;font-size:13.5px;opacity:.85;}
+.music-box iframe{border-radius:16px;box-shadow:0 16px 30px rgba(0,0,0,0.12);}
+
+/* =========================
+   BACK BUTTON
+========================= */
+.back-btn{
+  display:inline-block;
+  margin-top:26px;
+  padding:10px 18px;
+  border-radius:22px;
+  background:rgba(255,209,227,.95);
+  color:#dd6d96;
+  font-family:'Baloo 2',cursive;
+  text-decoration:none;
+  transition:transform .2s ease;
+}
+.back-btn:hover{transform:translateY(-2px);}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px){
+  .grid{grid-template-columns:repeat(3,1fr);}
+}
+@media (max-width: 600px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+  h1{font-size:30px;}
+}
+
+/* =========================
+   THEMES (BODY)
+========================= */
+.theme-sad{--bg1:#e7f0ff;--bg2:#ffe9f2;--accent1:#7fb2ff;--accent2:#ff9fc5;--title:#4f7dff;--sub:#ff6fa6;}
+.theme-angry{--bg1:#fff1e7;--bg2:#ffe4ec;--accent1:#ff9a5c;--accent2:#c97a3d;--title:#c86125;--sub:#8b4a20;}
+.theme-loved{--bg1:#ffe6f4;--bg2:#fff7fb;--accent1:#ff87c2;--accent2:#ffb3d9;--title:#ff4fa1;--sub:#ff6fb6;}
+.theme-sleep{--bg1:#dfe9ff;--bg2:#f3e8ff;--accent1:#7aa7ff;--accent2:#b89cff;--title:#6a6cff;--sub:#9a7cff;}
+.theme-lost{--bg1:#e9fff3;--bg2:#e6f2ff;--accent1:#76d9b4;--accent2:#8ec5fc;--title:#2fb58c;--sub:#5d87ff;}
+.theme-heavy{--bg1:#f3e8ff;--bg2:#ffe9f2;--accent1:#b79cff;--accent2:#ff9fc5;--title:#8a6cff;--sub:#ff6fa6;}
+.theme-overthinking{--bg1:#e8fffb;--bg2:#e6f2ff;--accent1:#79d9d1;--accent2:#8ec5fc;--title:#2aa9a1;--sub:#5d87ff;}
+.theme-tired{--bg1:#fff4e7;--bg2:#ffe4ec;--accent1:#ffb39b;--accent2:#ff9fc5;--title:#ff6d6d;--sub:#ff6fa6;}
+.theme-hard{--bg1:#e6f2ff;--bg2:#e9fff3;--accent1:#5d87ff;--accent2:#7ed9b3;--title:#3f6cff;--sub:#2fb58c;}
+.theme-stay{--bg1:#ffe4ec;--bg2:#e8f0ff;--accent1:#ff7aa2;--accent2:#7aa7ff;--title:#ff4f8e;--sub:#5d87ff;}
+
+/* =========================
+   PAGE COLOURS (MESSAGE + MUSIC)
+   Put class "page-xxx" on container
+========================= */
+
+/* SAD: blue message + pink song */
+.page-sad .message{
+  background:linear-gradient(135deg,rgba(247, 178, 178, 0.25),rgba(246, 123, 123, 0.48));
+  border:1px solid rgba(0, 20, 65, 0.35);
+}
+.page-sad .music-box{
+  background:linear-gradient(135deg,rgba(247, 178, 178, 0.25),rgba(246, 123, 123, 0.48));
+  border:1px solid rgba(22, 5, 43, 0.45);
+}
+.page-sad .music-title{color:#c04a7a;}
+.page-sad .music-note{color:#7a4a5a;}
+
+/* ANGRY: warm orange message + grounding brown song */
+.page-angry .message{
+  background:linear-gradient(135deg,rgba(244, 202, 172, 0.38),rgba(250, 190, 147, 0.48));
+  border:1px solid rgba(180,110,60,0.45);
+  color:#3b2414;
+}
+.page-angry .music-box{
+  background:linear-gradient(135deg,rgba(244, 202, 172, 0.38),rgba(250, 190, 147, 0.48));
+  border:1px solid rgba(170,120,80,0.45);
+}
+.page-angry .music-title{color:#8b4a20;}
+.page-angry .music-note{color:#5a3a22;}
+
+/* LOVED: rosy message + creamy song */
+.page-loved .message{
+  background:linear-gradient(135deg,rgba(240, 57, 155, 0.28),rgba(251, 141, 141, 0.6));
+  border:1px solid rgba(50, 13, 13, 0.4);
+}
+.page-loved .music-box{
+  background:linear-gradient(135deg,rgba(240, 57, 155, 0.28),rgba(251, 141, 141, 0.6));
+  border:1px solid rgba(50, 13, 13, 0.4);
+}
+.page-loved .music-title{color:#ff4fa1;}
+.page-loved .music-note{color:#7a3a58;}
+
+/* SLEEP: lavender message + midnight song */
+.page-sleep .message{
+  background:linear-gradient(135deg,rgba(12, 2, 107, 0.22),rgba(126, 100, 205, 0.55));
+  border:1px solid rgba(170,150,255,0.35);
+}
+.page-sleep .music-box{
+  background:linear-gradient(135deg,rgba(12, 2, 107, 0.22),rgba(126, 100, 205, 0.55));
+  border:1px solid rgba(150,150,255,0.35);
+}
+.page-sleep .music-title{color:#0a0a0c;}
+.page-sleep .music-note{color:#000000;}
+
+/* LOST: mint message + sky song */
+.page-lost .message{
+  background:linear-gradient(135deg,rgba(5, 141, 190, 0.22),rgba(102, 207, 172, 0.55));
+  border:1px solid rgba(120,200,170,0.35);
+}
+.page-lost .music-box{
+  background:linear-gradient(135deg,rgba(5, 141, 190, 0.22),rgba(97, 216, 246, 0.55));
+  border:1px solid rgba(150,210,255,0.35);
+}
+.page-lost .music-title{color:#2b5560;}
+.page-lost .music-note{color:#2b5560;}
+
+/* HEAVY: lilac message + soft rose song */
+.page-heavy .message{
+  background:linear-gradient(135deg,rgba(165, 135, 246, 0.2),rgba(253, 148, 193, 0.45));
+  border:1px solid rgba(180,160,255,0.35);
+}
+.page-heavy .music-box{
+  background:linear-gradient(135deg,rgba(253, 176, 211, 0.3),rgba(217, 183, 250, 0.52));
+  border:1px solid rgba(230,170,210,0.40);
+}
+.page-heavy .music-title{color:#8a6cff;}
+.page-heavy .music-note{color:#5b3a68;}
+
+/* OVERTHINKING: cool teal message + airy blue song */
+.page-overthinking .message{
+  background:linear-gradient(135deg,rgba(241, 228, 80, 0.22),rgba(249, 199, 48, 0.55));
+  border:1px solid rgba(120,210,205,0.35);
+}
+.page-overthinking .music-box{
+  background:linear-gradient(135deg,rgba(241, 228, 80, 0.22),rgba(249, 199, 48, 0.55));
+  border:1px solid rgba(150,200,255,0.35);
+}
+.page-overthinking .music-title{color:#943008;}
+.page-overthinking .music-note{color:#943008;}
+
+/* TIRED: peach message + soft pink song */
+.page-tired .message{
+  background:linear-gradient(135deg,rgba(144, 242, 111, 0.26),rgba(181, 242, 106, 0.58));
+  border:1px solid rgba(255,175,150,0.40);
+}
+.page-tired .music-box{
+  background:linear-gradient(135deg,rgba(144, 242, 111, 0.26),rgba(181, 242, 106, 0.58));
+  border:1px solid rgba(255,170,200,0.40);
+}
+.page-tired .music-title{color:#0d2d06;}
+.page-tired .music-note{color:#0d2d06;}
+
+/* HARD: brave blue message + fresh green song */
+.page-hard .message{
+  background:linear-gradient(135deg,rgba(210, 51, 238, 0.22),rgba(203, 222, 236, 0.55));
+  border:1px solid rgba(120,160,255,0.35);
+}
+.page-hard .music-box{
+  background:linear-gradient(135deg,rgba(210, 51, 238, 0.22),rgba(203, 222, 236, 0.55));
+  border:1px solid rgba(120,210,170,0.35);
+}
+.page-hard .music-title{color:#270532;}
+.page-hard .music-note{color:#270532;}
+
+/* STAY: romantic rose message + calm blue song */
+.page-stay .message{
+  background:linear-gradient(135deg,rgba(191, 11, 68, 0.22),rgba(255,220,235,0.55));
+  border:1px solid rgba(255,150,190,0.35);
+}
+.page-stay .music-box{
+  background:linear-gradient(135deg,rgba(235, 110, 202, 0.22),rgba(253, 144, 173, 0.55));
+  border:1px solid rgba(91, 4, 31, 0.35);
+}
+.page-stay .music-title{color:#ff4f8e;}
+.page-stay .music-note{color:#ff4f8e;}
